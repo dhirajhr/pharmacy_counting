@@ -32,15 +32,15 @@ public class Main {
 	    
 	    //(Drug,Cost) Grouping by Drug_Name and getting total cost for each drug
 	    Map<String,Long> drug_total_cost = lines.stream().skip(1).map(mapToItem)
-	    						   				.filter(object->object.valid)
-	    						   				.collect(Collectors.groupingBy(Prescriber::getDrugName,
-	    									  			Collectors.summingLong(Prescriber::getDrugCost)));
+	    										.filter(object->object.valid)
+	    										.collect(Collectors.groupingBy(Prescriber::getDrugName,
+	    												Collectors.summingLong(Prescriber::getDrugCost)));
 	    
 	    //(First_Name, Last_Name, Drug_Name) Grouping by all the three fields
-	    Map<String,Long> triple_group =    lines.stream().skip(1).map(mapToItem)
+	    Map<String,Long> triple_group = lines.stream().skip(1).map(mapToItem)
 	    										.filter(object->object.valid)
 	    										.collect(Collectors.groupingBy(p->p.firstName+"#"+p.lastName+"#"+p.drugName,
-	    																							Collectors.counting()));
+	    												Collectors.counting()));
 	    
 	    //(Drug,Count) Grouping by Drug_Name 
 	    Map<String,Long> drug_total_count = triple_group.keySet().stream()
