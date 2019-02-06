@@ -43,13 +43,13 @@ public class Prescriber
 	
 	boolean isValid()
 	{
-		if(lastName==null || lastName.length()==0)
+		if(lastName==null || lastName.trim().length()==0)
 			return false;
 
-		if(firstName==null || firstName.length()==0)
+		if(firstName==null || firstName.trim().length()==0)
 			return false;
 		
-		if(drugName==null || drugName.length()==0)
+		if(drugName==null || drugName.trim().length()==0)
 			return false;
 		
 		if(drugCost<0)
